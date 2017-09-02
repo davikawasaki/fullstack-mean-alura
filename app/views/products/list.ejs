@@ -4,10 +4,18 @@
             <tr>
                 <td>id</td>
                 <td>nome</td>
+                <td>descricao</td>
+                <td>preco</td>
             </tr>
             <tr>
-                <td>1</td>
-                <td>livro de node js</td>
+                <%for(var i=0; i<list.length;i++) {%>
+                    <tr>
+                        <td><%=list[i].id%></td>
+                        <td><%=list[i].title%></td>
+                        <td><%=list[i].description%></td>
+                        <td><%=list[i].price%></td>
+                    </tr>
+                <%}%>
             </tr>
         </table>
     </body>
