@@ -1,18 +1,11 @@
-var express = require('express');
-var app = express();
+// Setting a express proprietary module that sets and starts an express server
+var app = require('./config/express')();
 
 // Setting port as environment or 3000
 var port = process.env.port || 3000;
 
-// Setting HTML view engine as EJS to express
-app.set('view engine', 'ejs');
-
-/**
- * GET: products list rendered by EJS
- */
-app.get('/products', function(req, res) {
-    res.render("products/list");
-});
+// Importing Routes Modules
+var productsRoutes = require('./app/routes/products')(app);
 
 app.listen(port, function() {
     console.log("Running server on port " + port);
