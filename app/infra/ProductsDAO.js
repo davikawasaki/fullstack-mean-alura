@@ -10,6 +10,11 @@ ProductsDAO.prototype.list = function(callback) {
     this._connection.query('SELECT * FROM products', callback);
 }
 
+ProductsDAO.prototype.save = function(product, callback) {
+    this._connection.query('INSERT INTO products set ?', product, callback);
+    // this._connection.query('INSERT INTO products (title, price, description) values (?, ?, ?)',  [product.title, product.price, product.description], callback);
+}
+
 // Prototype wrapper
 module.exports = function() {
     return ProductsDAO;
