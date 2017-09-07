@@ -2,12 +2,24 @@ var mysql = require('mysql');
 
 // Factory method
 function createDBConnection() {
-    return mysql.createConnection({
-        host : 'localhost',
-        user : 'root',
-        password : 'root',
-        database : 'fullstack_mean'
-    });
+    // DB for development
+    if(!process.env.NODE_ENV) {
+        return mysql.createConnection({
+            host : 'localhost',
+            user : 'root',
+            password : 'root',
+            database : 'fullstack_mean'
+        });
+    }
+    // DB for tests
+    else if(process.env.NODE_ENV == 'test') {
+        return mysql.createConnection({
+            host : 'localhost',
+            user : 'root',
+            password : 'root',
+            database : 'fullstack_mean_test'
+        });
+    }
 };
 
 // Prototype wrapper

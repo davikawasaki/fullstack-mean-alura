@@ -23,5 +23,10 @@
     "express-load": "^1.1.16",
     "express-validator": "^4.1.1",
     "mysql": "^2.14.1"
+  },
+  "devDependencies": {
+    "database-cleaner": "^1.2.0",
+    "mocha": "^3.5.0",
+    "supertest": "^3.0.0"
   }
 }

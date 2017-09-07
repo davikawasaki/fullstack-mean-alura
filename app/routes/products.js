@@ -1,13 +1,18 @@
 
 module.exports = function(app) {
 
-    var productsList = function(req, res) {
+    var productsList = function(req, res, next) {
         var connection = app.infra.connectionFactory();
         // Creating a new scope, instead of using a global one
         var productsDAO = new app.infra.ProductsDAO(connection);
 
         productsDAO.list(function(err, results) {
             
+            // Throwing errors to the next element of express flow
+            if(err) {
+                return next(err);
+            }
+
             // Receives a literal object and return a format depending on the request content negotiation
             res.format({
                 html: function() {
@@ -39,7 +44,7 @@ module.exports = function(app) {
      * POST: register a new product request
      * Address (/products) + verb (POST)
      */
-    app.post('/products', function(req, res) {
+    app.post('/products', function(req, res, next) {
 
         var product = req.body;
 
@@ -65,6 +70,11 @@ module.exports = function(app) {
         var productsDAO = new app.infra.ProductsDAO(connection);
 
         productsDAO.save(product, function(err, results) {
+
+            if(err) {
+                return next(err);
+            }
+
             res.redirect('/products');
         });
 
