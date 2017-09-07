@@ -23,7 +23,7 @@ clientHttp.on('error', function(e) {
 });
 
 var product = {
-    title: 'More about Node',
+    title: '',
     description: 'Node, javascript and about HTTP',
     price: 100
 };

@@ -6,6 +6,9 @@ var load = require('express-load');
 // Fill request body with parser
 var bodyParser = require('body-parser');
 
+// Validate JSON fields from requests
+var expressValidator = require('express-validator');
+
 module.exports = function() {
     // First load the module and then invokes the object 
     var app = express();
@@ -20,6 +23,7 @@ module.exports = function() {
     // Example: nested object can be posted with qs library
     app.use(bodyParser.urlencoded({extended: true}));
     app.use(bodyParser.json());
+    app.use(expressValidator());
 
     // Changing default directory to app with cwd
     load('routes', {cwd: 'app'})

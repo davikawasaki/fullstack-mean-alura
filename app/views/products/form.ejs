@@ -1,17 +1,26 @@
 <html>
     <body>
+        <div class="errors">
+            <%if(validationErrors){%>
+                <ul>
+                    <%for(var i = 0; i < validationErrors.length; i++){%>
+                        <li><%=validationErrors[i].param%> - <%=validationErrors[i].msg%></li>
+                    <%}%>
+                </ul>
+            <%}%>
+        </div>
         <form action="/products" method="POST">
             <div>
                 <label>Título</label>
-                <input type="text" id="title" name="title" placeholder="Título do livro" />
+                <input type="text" id="title" name="title" value="<%=product.title%>" placeholder="Título do livro" />
             </div>
             <div>
                 <label>Preço</label>
-                <input type="text" id="price" name="price" placeholder="30.90" />
+                <input type="text" id="price" name="price" value="<%=product.price%>" placeholder="30.90" />
             </div>
             <div>
                 <label>Descrição</label>
-                <textarea cols="20" rows="10" type="text" id="description" name="description" placeholder="Fale sobre o livro"></textarea>
+                <textarea cols="20" rows="10" type="text" id="description" name="description" placeholder="Fale sobre o livro"><%=product.description%></textarea>
             </div>
             <input type="submit" value="Salvar" />
         </form>
