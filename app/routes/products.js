@@ -7,7 +7,17 @@ module.exports = function(app) {
         var productsDAO = new app.infra.ProductsDAO(connection);
 
         productsDAO.list(function(err, results) {
-            res.render('products/list',{list:results});
+            
+            // Receives a literal object and return a format depending on the request content negotiation
+            res.format({
+                html: function() {
+                    res.render('products/list',{list:results});
+                },
+                json: function() {
+                    res.json(results);
+                }
+            });
+
         });
 
         connection.end();
@@ -37,9 +47,7 @@ module.exports = function(app) {
         var productsDAO = new app.infra.ProductsDAO(connection);
 
         productsDAO.save(product, function(err, results) {
-            if(!err) {
-                res.redirect('/products');
-            }
+            res.redirect('/products');
         });
 
         connection.end();

@@ -19,6 +19,7 @@ module.exports = function() {
     // Uses the qs library instead of querystring one
     // Example: nested object can be posted with qs library
     app.use(bodyParser.urlencoded({extended: true}));
+    app.use(bodyParser.json());
 
     // Changing default directory to app with cwd
     load('routes', {cwd: 'app'})
