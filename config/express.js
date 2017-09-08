@@ -13,6 +13,9 @@ module.exports = function() {
     // First load the module and then invokes the object 
     var app = express();
 
+    // Middleware to serve static data from within a directory
+    app.use(express.static('./app/public'));
+
     // Setting HTML view engine as EJS to express
     app.set('view engine', 'ejs');
     app.set('views', './app/views');
