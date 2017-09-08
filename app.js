@@ -7,7 +7,7 @@ var io = require('socket.io')(http);
 app.set('io', io);
 
 // Setting port as environment or 3000
-var port = process.env.port || 3000;
+var port = process.env.PORT || 3000;
 
 var server = http.listen(port, function() {
     var host = server.address().address;
