@@ -4,7 +4,6 @@ module.exports = function(app) {
         var connection = app.infra.connectionFactory();
         var productsDAO = new app.infra.ProductsDAO(connection);
         productsDAO.list(function(err, results) {
-            console.log(results)
             res.render('home/index',{books:results});
         });
         connection.end();

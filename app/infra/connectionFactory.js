@@ -24,10 +24,6 @@ function createDBConnection() {
     else if(process.env.NODE_ENV == 'production') {
         var connectionUrl = process.env.CLEARDB_DATABASE_URL;
         var connGroups = connectionUrl.match(/mysql:\/\/(.*):(.*)@(.*)\/(.*)\?/);
-        console.log("Host: " + connGroups[3]);
-        console.log("User: " + connGroups[1]);
-        console.log("Pass: " + connGroups[2]);
-        console.log("Database: " + connGroups[4]);
         return mysql.createConnection({
             host : connGroups[3],
             user : connGroups[1],
