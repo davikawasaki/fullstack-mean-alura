@@ -87,7 +87,7 @@
 <section id="index-section" class="container middle" ng-controller="HomeController">
 
     <ul id="home-highlight-collection">
-        <%for(i=0; i<3; i++) {%>
+        <%for(i=0; i<books.length; i++) {%>
         <li class="col-left">
             <a href="linkDetalhe" class="block clearfix">
                 <img width="170" height="240" src="//cdn.shopify.com/s/files/1/0155/7645/products/nodejs-featured_large.png?v=1411486494" alt="<%=books[i].title%>" title="<%=books[i].title%>"/>
