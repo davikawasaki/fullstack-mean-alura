@@ -20,6 +20,17 @@ function createDBConnection() {
             database : 'fullstack_mean_test'
         });
     }
+    // DB for production (heroku)
+    else if(process.env.NODE_ENV == 'production') {
+        var connectionUrl = process.env.CLEARDB_DATABASE_URL;
+        var connGroups = connectionUrl.match(/mysql:\/\/(.*):(.*)@(.*)\/(.*)\?/);
+        return mysql.createConnection({
+            host : connGroups[3],
+            user : connGroups[1],
+            password : connGroups[2],
+            database : connGroups[4]
+        });
+    }
 };
 
 // Prototype wrapper
