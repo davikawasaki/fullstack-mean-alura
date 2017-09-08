@@ -42,8 +42,11 @@ module.exports = function() {
     // Has priority because has an error argument inside the anonymous function
     app.use(function(error,req,res,next) {
         if(process.env.NODE_ENV == 'production') {
-            res.status(500).render('errors/500');
-            return;
+            if(error) {
+                console.log(error);
+                res.status(500).render('errors/500');
+                return;
+            }
         }
         next(error);
     });
