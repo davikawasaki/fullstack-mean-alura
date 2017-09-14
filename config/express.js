@@ -29,8 +29,9 @@ module.exports = function() {
     app.use(expressValidator());
 
     // Changing default directory to app with cwd
-    load('routes', {cwd: 'app'})
-        .then('infra')
+    load('infra', {cwd: 'app'})
+        .then('controller')
+        .then('routes')
         .into(app);
 
     // Middleware to redirect 404 not found pages
