@@ -1,7 +1,7 @@
 
 module.exports = function(app) {
 
-    var promotionsCtrl = new app.controller.PromotionsCtrl(app);
+    var promotionsCtrl = new app.controllers.PromotionsCtrl(app);
 
     /**
      * GET: Render promotions form page

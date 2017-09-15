@@ -1,0 +1,24 @@
+<html>
+    <body>
+        <div class="errors">
+            <%if(loginErrors){%>
+                <ul>
+                    <%for(var i = 0; i < loginErrors.length; i++){%>
+                        <li><%=loginErrors[i].msg%></li>
+                    <%}%>
+                </ul>
+            <%}%>
+        </div>
+        <form action="/login" method="POST">
+            <div>
+                <label>Username</label>
+                <input type="text" id="username" name="username" value="<%=login.username%>" />
+            </div>
+            <div>
+                <label>Password</label>
+                <input type="password" id="password" name="password" value="<%=login.password%>" />
+            </div>
+            <input type="submit" value="Login" />
+        </form>
+    </body>
+</html>

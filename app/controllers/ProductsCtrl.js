@@ -12,16 +12,6 @@ function ProductsCtrl(app) {
     };
 
     /**
-     * Return products list to products page
-     * @param {Object} req (request)
-     * @param {Object} res (response)
-     * @param {Function} next (event flow call)
-     */
-    this.getProductsList = function(req, res, next) {
-        listProducts(req, res, next, app, 'products/list');
-    };
-
-    /**
      * Return register new product page
      * @param {Object} req (request)
      * @param {Object} res (response)
@@ -56,7 +46,7 @@ module.exports = function() {
  * @param {Object} app (express object)
  * @param {String} page ('home/index')
  */
-function listProducts(req, res, next, app, page) {
+function listProducts(req, res, next, app, page, redirect) {
     var connection = app.infra.connectionFactory();
     var productsDAO = new app.infra.ProductsDAO(connection);
     productsDAO.list(function(err, results) {

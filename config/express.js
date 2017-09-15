@@ -19,6 +19,8 @@ module.exports = function() {
     // Setting HTML view engine as EJS to express
     app.set('view engine', 'ejs');
     app.set('views', './app/views');
+    
+    app.set('secret', 'y0ug0tt4f1ndth3secr3t');
 
     // Parser middleware to load before routes
     // The "extended" syntax allows for rich objects and arrays to be encoded into the URL-encoded format, allowing for a JSON-like experience with URL-encoded
@@ -30,7 +32,8 @@ module.exports = function() {
 
     // Changing default directory to app with cwd
     load('infra', {cwd: 'app'})
-        .then('controller')
+        .then('controllers')
+        .then('routes/loginRoute.js')
         .then('routes')
         .into(app);
 
